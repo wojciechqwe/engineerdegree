@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
 
 class Character extends Component {
+	state = {
+		wrapper: {
+			position: "fixed",
+			transform: "translateY(250px)"
+		}
+	}
+
+	componentDidMount() {
+		setTimeout(() => {
+			this.setState({
+				wrapper: {
+					position: "fixed",
+					transition: "2s",
+					transform: "translateY(0px)"
+				}
+			})
+		}, 6000);
+	}
+
 	render() {
 		let style = {
 			character: {
@@ -12,8 +31,10 @@ class Character extends Component {
 		}
 		return (
 			<div style={style.character}>
-				<div style={this.styles.head}></div>
-				<div style={this.styles.body}></div>
+				<div style={this.state.wrapper}>
+					<div style={this.styles.head}></div>
+					<div style={this.styles.body}></div>
+				</div>
 			</div>
 		);
 	}

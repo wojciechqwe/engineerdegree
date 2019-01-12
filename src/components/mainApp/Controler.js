@@ -92,7 +92,6 @@ class MainController extends Component {
       if (newCharacter.left + this.state.speed.x > 20 && newCharacter.left + this.state.speed.x < this.state.windowSize.width - this.state.windowSize.height*14/100 - 20) {
         newCharacter.left = newCharacter.left + this.state.speed.x;
       }
-      console.log(this.props.windowHeights);
       if (newCharacter.top + this.state.speed.y < this.state.windowSize.height*4/5 -20 && newCharacter.top + this.state.speed.y > this.state.windowSize.height*3/5) {
         newCharacter.top = newCharacter.top + this.state.speed.y;
       }
@@ -104,8 +103,8 @@ class MainController extends Component {
     if(this.state.character.top === 0) {
       this.setState({
         character: {
-          top: windowSize.windowHeight*7/10,
-          left: 50
+          top: windowSize.windowHeight*7/10-20,
+          left: windowSize.windowWidth/2 - 110
         }
       })
     }
@@ -133,11 +132,20 @@ class MainController extends Component {
           this.onChangeWindowSize(windowSize)
         }} />
         <Character characterStyle={this.state.character} />
-        <CharacterConversationClouds characterStyle={{left: this.state.character.left, top: this.state.windowSize.height - this.state.character.top}} />
+        <CharacterConversationClouds characterStyle={{left: this.state.character.left, top: this.state.windowSize.height - this.state.character.top}} windowSize={this.state.windowSize} />
         <MainStage />
-        <Paintings windowSize={this.state.windowSize} />
+        <Paintings characterStyle={{left: this.state.character.left}} />
       </div>
     );
+  }
+
+  styles = {
+    wrapper: {
+      width: "100vw",
+      height: "100vh",
+      overflow: "hidden",
+      zIndex: 1
+    }
   }
 }
 
