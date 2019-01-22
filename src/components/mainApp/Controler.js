@@ -8,6 +8,14 @@ import MainStage from "./components/MainStage";
 import Paintings from "./components/PaintingsWrapper";
 import CharacterConversationClouds from "./components/CharacterConversationClouds";
 
+const paintingNames = [
+  "painting1",
+  "painting2",
+  "painting3",
+  "painting4",
+  "painting5",
+]
+
 class MainController extends Component {
   state = {
     speed: {
@@ -22,7 +30,16 @@ class MainController extends Component {
     windowSize: {
       height: 0,
       width: 0
-    }
+    },
+    showMenu: false
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        showMenu: true
+      })
+    }, 7000);
   }
 
   movingInterval = null;
@@ -89,10 +106,10 @@ class MainController extends Component {
   onChangeMovingInterval = () => {
     this.movingInterval = setInterval(() => {
       let newCharacter = cloneDeep(this.state.character);
-      if (newCharacter.left + this.state.speed.x > 20 && newCharacter.left + this.state.speed.x < this.state.windowSize.width - this.state.windowSize.height*14/100 - 20) {
+      if (newCharacter.left + this.state.speed.x > 20 && newCharacter.left + this.state.speed.x < this.state.windowSize.width - this.state.windowSize.height * 14 / 100 - 20) {
         newCharacter.left = newCharacter.left + this.state.speed.x;
       }
-      if (newCharacter.top + this.state.speed.y < this.state.windowSize.height*4/5 -20 && newCharacter.top + this.state.speed.y > this.state.windowSize.height*3/5) {
+      if (newCharacter.top + this.state.speed.y < this.state.windowSize.height * 4 / 5 - 20 && newCharacter.top + this.state.speed.y > this.state.windowSize.height * 3 / 5) {
         newCharacter.top = newCharacter.top + this.state.speed.y;
       }
       this.setState({ character: newCharacter });
@@ -100,11 +117,11 @@ class MainController extends Component {
   }
 
   onChangeWindowSize = (windowSize) => {
-    if(this.state.character.top === 0) {
+    if (this.state.character.top === 0) {
       this.setState({
         character: {
-          top: windowSize.windowHeight*7/10-20,
-          left: windowSize.windowWidth/2 - 110
+          top: windowSize.windowHeight * 7 / 10 - 20,
+          left: windowSize.windowWidth / 2 - 110
         }
       })
     }
@@ -117,6 +134,31 @@ class MainController extends Component {
   }
 
   render() {
+    let currentPainting = Math.floor((this.state.character.left + this.state.windowSize.width * 5 / 100) / (this.state.windowSize.width / 5));
+
+    let styles = {
+      topMenu: {
+        position: "fixed",
+        height: "15vh",
+        width: "100vw",
+        zIndex: 1000,
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: this.props.showStaticPage || this.props.showContact ? "#eee" : "rgba(0,0,0,0)",
+        transition: "1s",
+        opacity: this.state.showMenu ? 1 : 0
+      },
+      staticPageButton: {
+        height: "10vh",
+        width: "10vh",
+        backgroundColor: "#4a4a4a"
+      },
+      header:{
+        fontSize: 40
+      }
+    }
+
     return (
       <div>
         {this.props.windowHeight}
@@ -131,10 +173,15 @@ class MainController extends Component {
         <WindowSizeListener onResize={windowSize => {
           this.onChangeWindowSize(windowSize)
         }} />
+        <div style={styles.topMenu}>
+          <div style={styles.staticPageButton} onClick={this.props.onShowContact}></div>
+          <div style={styles.header}> {this.state.character.top / this.state.windowSize.height < 0.65 && !this.props.showStaticPage ? paintingNames[currentPainting] : "Something"} </div>
+          <div style={styles.staticPageButton} onClick={this.props.onShowStaticPage}></div>
+        </div>
         <Character characterStyle={this.state.character} />
-        <CharacterConversationClouds characterStyle={{left: this.state.character.left, top: this.state.windowSize.height - this.state.character.top}} windowSize={this.state.windowSize} />
+        <CharacterConversationClouds currentPainting={currentPainting} characterStyle={{ left: this.state.character.left, top: this.state.windowSize.height - this.state.character.top, percentageTop: this.state.character.top / this.state.windowSize.height }} windowSize={this.state.windowSize} />
         <MainStage />
-        <Paintings characterStyle={{left: this.state.character.left}} />
+        <Paintings characterStyle={{ left: this.state.character.left }} />
       </div>
     );
   }
@@ -145,7 +192,7 @@ class MainController extends Component {
       height: "100vh",
       overflow: "hidden",
       zIndex: 1
-    }
+    },
   }
 }
 

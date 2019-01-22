@@ -388,7 +388,7 @@ class CharacterConversationClouds extends Component {
       ]
     }
   ]
-  paintingNames=[
+  paintingNames = [
     'paint0',
     'paint1',
     'paint2',
@@ -422,18 +422,15 @@ class CharacterConversationClouds extends Component {
   }
 
   showQuestions(paintings) {
-    let currentPainting = Math.floor((this.props.characterStyle.left + this.props.windowSize.width * 5 / 100) / (this.props.windowSize.width / 5));
-    if (paintings[currentPainting]) {
-      const point = paintings[currentPainting].points[this.state.currentPoint];
-      // this.setState({
-      //   currentPaintgName: this.paintingNames[currentPainting]
-      // });
-      if (this.state.showQuestions && this.props.characterStyle.top > 230) {
+    if (paintings[this.props.currentPainting]) {
+      const point = paintings[this.props.currentPainting].points[this.state.currentPoint];
+      if (this.state.showQuestions && this.props.characterStyle.percentageTop < 0.65
+      ) {
         let renderedQuestions = [];
         for (let questionID of point.questions) {
           renderedQuestions.push(
-            <div key={this.paintings[currentPainting].questions[questionID].id} style={this.styles.conversationCloud} onClick={() => { this.readAnswer(this.paintings[currentPainting].questions[questionID]) }}>
-              {this.paintings[currentPainting].questions[questionID].question[0]}
+            <div key={this.paintings[this.props.currentPainting].questions[questionID].id} style={this.styles.conversationCloud} onClick={() => { this.readAnswer(this.paintings[this.props.currentPainting].questions[questionID]) }}>
+              {this.paintings[this.props.currentPainting].questions[questionID].question[0]}
             </div>
           )
         }

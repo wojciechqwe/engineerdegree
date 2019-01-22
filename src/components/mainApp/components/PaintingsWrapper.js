@@ -52,7 +52,7 @@ class MainStage extends Component {
           transform: "scale(1) translateY(0px)"
         },
       })
-    }, 5000);
+    }, 5010);
   }
 
   showDetailedPicture = (picture) => {

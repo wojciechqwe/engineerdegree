@@ -4,7 +4,7 @@ class Character extends Component {
 	state = {
 		wrapper: {
 			position: "fixed",
-			transform: "translateY(250px)"
+			transform: "translateY(310px)"
 		}
 	}
 
