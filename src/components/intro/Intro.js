@@ -26,6 +26,7 @@ class MainStage extends Component {
       alignItems: "center",
       overflow: "hidden",
       transition: "1s",
+      cursor: "pointer"
     },
     wrapper: {
       position: "fixed",
@@ -57,7 +58,9 @@ class MainStage extends Component {
 
   message = [
     "my name is wojciech.",
-    "and this is my exhibition",
+    "i'm not artist.",
+    "but this is my exhibition.",
+    "hope you like it.",    
     // "so i will cut the long story short",
     // "well...",
 
@@ -104,10 +107,10 @@ class MainStage extends Component {
           this.setState({ currentImage: LoadingImage2 });
           break;
         case 3:
-          this.setState({ currentImage: LoadingImage4 });
+          this.setState({ currentImage: LoadingImage3 });
           break;
         case 4:
-          this.setState({ currentImage: LoadingImage3 });
+          this.setState({ currentImage: LoadingImage4 });
           i = 0;
         default:
           break;
@@ -254,7 +257,8 @@ class MainStage extends Component {
     mainInfo: {
       color: "#fff",
       fontSize: 60,
-      textAlign: "center"
+      textAlign: "center",
+      fontFamily: 'Poiret One'
     },
   }
 }

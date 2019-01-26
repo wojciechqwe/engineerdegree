@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import Sound from 'react-sound';
 import Painting1 from './../../../resources/assets/painting1.jpg';
+import Sound1 from './../../../resources/sounds/glass.mp3';
 import Painting2 from './../../../resources/assets/painting2.jpg';
+import Sound2 from './../../../resources/sounds/glass.mp3';
 import Painting3 from './../../../resources/assets/painting3.jpg';
+import Sound3 from './../../../resources/sounds/glass.mp3';
 import Painting4 from './../../../resources/assets/painting4.jpg';
+import Sound4 from './../../../resources/sounds/glass.mp3';
 import Painting5 from './../../../resources/assets/painting5.jpg';
+import Sound5 from './../../../resources/sounds/glass.mp3';
 
+const paintings = [Painting1, Painting2, Painting3, Painting4, Painting5];
+const sounds = [Sound1, Sound2, Sound3, Sound4, Sound5];
 class MainStage extends Component {
   state = {
     showDetailedPicture: false,
@@ -55,11 +63,12 @@ class MainStage extends Component {
     }, 5010);
   }
 
-  showDetailedPicture = (picture) => {
+  showDetailedPicture = (pictureNumber) => {
     this.setState({
       showDetailedPicture: true,
-      currentPicture: picture
+      currentPicture: paintings[pictureNumber]
     });
+
   }
 
   hideDetailedPicture = () => {
@@ -71,24 +80,24 @@ class MainStage extends Component {
   render() {
     return (
       <div>
-          <div style={this.styles.wrapper}>
-            <div style={this.state.flexWrapper}>
-              <div style={this.styles.paintingSmall}>
-                <img src={Painting1} onClick={() => this.showDetailedPicture(Painting1)} style={this.styles.paintingSmall} />
-              </div>
-              <div style={this.styles.paintingMedium} >
-                <img src={Painting2} onClick={() => this.showDetailedPicture(Painting2)} style={this.styles.paintingMedium} />
-              </div>
-              <div style={this.styles.paintingBig} >
-                <img src={Painting3} onClick={() => this.showDetailedPicture(Painting3)} style={this.styles.paintingBig} sd />
-              </div>
-              <div style={this.styles.paintingMedium} >
-                <img src={Painting4} onClick={() => this.showDetailedPicture(Painting4)} style={this.styles.paintingMedium} />
-              </div>
-              <div style={this.styles.paintingSmall} >
-                <img src={Painting5} onClick={() => this.showDetailedPicture(Painting5)} style={this.styles.paintingSmall} />
-              </div>
+        <div style={this.styles.wrapper}>
+          <div style={this.state.flexWrapper}>
+            <div style={this.styles.paintingSmall}>
+              <img src={Painting1} onClick={() => this.showDetailedPicture(0)} style={this.styles.paintingSmall} />
             </div>
+            <div style={this.styles.paintingMedium} >
+              <img src={Painting2} onClick={() => this.showDetailedPicture(1)} style={this.styles.paintingMedium} />
+            </div>
+            <div style={this.styles.paintingBig} >
+              <img src={Painting3} onClick={() => this.showDetailedPicture(2)} style={this.styles.paintingBig} sd />
+            </div>
+            <div style={this.styles.paintingMedium} >
+              <img src={Painting4} onClick={() => this.showDetailedPicture(3)} style={this.styles.paintingMedium} />
+            </div>
+            <div style={this.styles.paintingSmall} >
+              <img src={Painting5} onClick={() => this.showDetailedPicture(4)} style={this.styles.paintingSmall} />
+            </div>
+          </div>
         </div>
         {this.state.showDetailedPicture ?
           <div onClick={this.hideDetailedPicture} style={this.styles.showPaintingWrapper}>
@@ -96,6 +105,11 @@ class MainStage extends Component {
             <div style={this.styles.subtitles}>
               {this.state.currentAnswer}
             </div>
+            <Sound
+              url={Sound1}
+              playStatus={Sound.status.PLAYING}
+              playFromPosition={0 /* in milliseconds */}
+            />
           </div> :
           <div />
         }

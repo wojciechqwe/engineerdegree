@@ -8,6 +8,7 @@ import MainStage from "./components/MainStage";
 import Paintings from "./components/PaintingsWrapper";
 import CharacterConversationClouds from "./components/CharacterConversationClouds";
 
+const galeryName = "Galeria";
 const paintingNames = [
   "painting1",
   "painting2",
@@ -151,8 +152,14 @@ class MainController extends Component {
       },
       staticPageButton: {
         height: "10vh",
-        width: "10vh",
-        backgroundColor: "#4a4a4a"
+        width: "15vh",
+        border: "solid rgb(74, 74, 74)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: 22,
+        margin: 20,
+        cursor: "pointer"
       },
       header:{
         fontSize: 40
@@ -174,9 +181,9 @@ class MainController extends Component {
           this.onChangeWindowSize(windowSize)
         }} />
         <div style={styles.topMenu}>
-          <div style={styles.staticPageButton} onClick={this.props.onShowContact}></div>
-          <div style={styles.header}> {this.state.character.top / this.state.windowSize.height < 0.65 && !this.props.showStaticPage ? paintingNames[currentPainting] : "Something"} </div>
-          <div style={styles.staticPageButton} onClick={this.props.onShowStaticPage}></div>
+          <div style={styles.staticPageButton} onClick={this.props.onShowContact}>Kontakt</div>
+          <div style={styles.header}> {this.state.character.top / this.state.windowSize.height < 0.65 && !this.props.showStaticPage ? paintingNames[currentPainting] : galeryName} </div>
+          <div style={styles.staticPageButton} onClick={this.props.onShowStaticPage}>Informacje</div>
         </div>
         <Character characterStyle={this.state.character} />
         <CharacterConversationClouds currentPainting={currentPainting} characterStyle={{ left: this.state.character.left, top: this.state.windowSize.height - this.state.character.top, percentageTop: this.state.character.top / this.state.windowSize.height }} windowSize={this.state.windowSize} />

@@ -475,7 +475,8 @@ class CharacterConversationClouds extends Component {
       bottom: 20,
       width: "100vw",
       textAlign: "center",
-      color: "#000",
+      color: "#fff",
+      fontSize: 24,
       zIndex: 10000
     }
   }

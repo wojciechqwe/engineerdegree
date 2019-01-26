@@ -39,7 +39,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div style={this.style.app}>
         {this.state.showApp ?
           <MainApp onShowStaticPage={this.onShowStaticPage} onShowContact={this.onShowContact} showContact={this.state.showContact} showStaticPage={this.state.showStaticPage} /> :
           <div />
@@ -52,6 +52,12 @@ class App extends Component {
         <Contact showStaticPage={this.state.showContact}/>
       </div>
     );
+  }
+
+  style = {
+    app: {
+      fontFamily: 'Poiret One'
+    }
   }
 }
 
