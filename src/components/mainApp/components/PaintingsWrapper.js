@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Sound from 'react-sound';
-import Painting1 from './../../../resources/assets/painting1.jpg';
+import Painting1 from './../../../resources/assets/painting3.jpg';
 import Sound1 from './../../../resources/sounds/glass.mp3';
 import Painting2 from './../../../resources/assets/painting2.jpg';
 import Sound2 from './../../../resources/sounds/glass.mp3';
-import Painting3 from './../../../resources/assets/painting3.jpg';
+import Painting3 from './../../../resources/assets/painting1.jpg';
 import Sound3 from './../../../resources/sounds/glass.mp3';
-import Painting4 from './../../../resources/assets/painting4.jpg';
+import Painting4 from './../../../resources/assets/painting4.png';
 import Sound4 from './../../../resources/sounds/glass.mp3';
-import Painting5 from './../../../resources/assets/painting5.jpg';
+import Painting5 from './../../../resources/assets/painting5.png';
 import Sound5 from './../../../resources/sounds/glass.mp3';
 
 const paintings = [Painting1, Painting2, Painting3, Painting4, Painting5];
@@ -17,7 +17,7 @@ class MainStage extends Component {
   state = {
     showDetailedPicture: false,
     currentPicture: null,
-    currentAnswer: "SOMETHING",
+    currentAnswer: "",
     flexWrapper: {
       position: "absolute",
       height: "70vh",
@@ -105,11 +105,11 @@ class MainStage extends Component {
             <div style={this.styles.subtitles}>
               {this.state.currentAnswer}
             </div>
-            <Sound
+            {/* <Sound
               url={Sound1}
               playStatus={Sound.status.PLAYING}
               playFromPosition={0 /* in milliseconds */}
-            />
+            /> */}
           </div> :
           <div />
         }

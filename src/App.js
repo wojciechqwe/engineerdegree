@@ -3,6 +3,7 @@ import MainApp from './components/mainApp/Controler';
 import StaticPage from './components/staticPage/Controler';
 import Contact from './components/contact/Controler';
 import Intro from './components/intro/Intro';
+import Presentation from './components/presentation/Controller'
 
 class App extends Component {
   state = {
@@ -50,6 +51,7 @@ class App extends Component {
         }
         <StaticPage showStaticPage={this.state.showStaticPage}/>
         <Contact showStaticPage={this.state.showContact}/>
+        <Presentation />
       </div>
     );
   }

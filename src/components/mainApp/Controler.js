@@ -8,13 +8,13 @@ import MainStage from "./components/MainStage";
 import Paintings from "./components/PaintingsWrapper";
 import CharacterConversationClouds from "./components/CharacterConversationClouds";
 
-const galeryName = "Galeria";
+const galeryName = "Galeria „Wyraz”";
 const paintingNames = [
-  "painting1",
-  "painting2",
-  "painting3",
-  "painting4",
-  "painting5",
+  "„Noc”",
+  "„Walka na brzegu”",
+  "„Kolumna”",
+  "„Gwiazdy”",
+  "„Dylemat”",
 ]
 
 class MainController extends Component {

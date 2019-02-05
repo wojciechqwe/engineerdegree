@@ -57,31 +57,9 @@ class MainStage extends Component {
   }
 
   message = [
-    "my name is wojciech.",
-    "i'm not artist.",
-    "but this is my exhibition.",
-    "hope you like it.",    
-    // "so i will cut the long story short",
-    // "well...",
-
-    // "there was a girl",
-    // "you know that feeling, right?",
-    // "i know you f*$#ing do.",
-    // "when you wanna hug her tight",
-    // "and make her feel alright",
-    // "just because.",
-    // "you don't know why you like her",
-    // "didn't really thought about it",
-    // "me neither",
-    // "maybe, that's because of the way she eats?",
-    // "or how she awkwardly dance, to radio songs in a car?",
-    // "or the way she makes the snowballs in a snowy day?",
-    // "maybe",
-    // "i don't know",
-    // "so i tried to find those things",
-    // "and i still do",
-    // // "alone",
-    // "just because."
+    "dzien dobry.",
+    "nazywam sie wojciech.",
+    "zapraszam do obejrzenia wystawy.",
   ];
 
   currentInterval = null;

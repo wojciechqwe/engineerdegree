@@ -11,7 +11,7 @@ class PaintingInfo extends Component {
   renderInfo = () => {
     return <div style={this.styles.infoWrapper}>
       <div style={this.styles.header}>Wojciech Stanisz</div>
-      <div style={this.styles.info}>sadfasdf asdfsadfas asdfasdfasdf asdfasdfasda dfasdfa dfasdf asdfas dfasdfasdfdasfads fasdfasdfas dfadfasdfasd fasdf asdfadfas dfasfasdfa dfasdf a sdfasdf asd asdf asdf asdfa</div>
+      <div style={this.styles.info}>Student politechniki Krakowskiej, interesuje się sztuką. W czasie wolnym tworzy aplikacje na urządzenia mobilne. Nieuleczalny zwolennik gier planszowych, oraz sesji RPG.</div>
     </div>
   }
 
